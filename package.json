@@ -1,0 +1,27 @@
+{
+  "name": "learn-client-oauth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "lint": "eslint --fix \"**/*.js\" \"**/*.jsx\"",
+    "format": "prettier --write \"**/*.{json, js, jsx}\"",
+    "precommit": "npm run lint && npm run format && git add ."
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-react-views": "^0.11.0",
+    "morgan": "~1.9.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "prettier": "^2.1.2"
+  }
+}
