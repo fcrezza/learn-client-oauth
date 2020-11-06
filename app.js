@@ -30,7 +30,10 @@ app.get('/', async (req, res) => {
         data: resp.data
       });
     } catch (err) {
-      res.render('index', {
+      if (err.response.status === 401) {
+        return res.redirect('/login');
+      }
+      return res.render('index', {
         error: err
       });
     }
@@ -65,7 +68,6 @@ app.get('/login/oauth', (req, res) => {
   })
     .then(resp => {
       res.cookie('bearer', resp.data.access_token, {
-        maxAge: 180000,
         httpOnly: true
       });
       res.redirect('/');
@@ -75,8 +77,7 @@ app.get('/login/oauth', (req, res) => {
 
 app.get('/logout', (req, res) => {
   res.clearCookie('bearer', {
-    httpOnly: true,
-    maxAge: 180000
+    httpOnly: true
   });
   res.redirect('/');
 });
